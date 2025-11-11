@@ -6,7 +6,7 @@ _builtin_context_processors = ("django.template.context_processors.csrf",)
 
 
 class ContextPopException(Exception):
-    "pop() has been called more times than push()"
+    """pop() has been called more times than push()"""
 
     pass
 
@@ -65,7 +65,7 @@ class BaseContext:
         return self.dicts.pop()
 
     def __setitem__(self, key, value):
-        "Set a variable in the current context"
+        """Set a variable in the current context"""
         self.dicts[-1][key] = value
 
     def set_upward(self, key, value):
@@ -91,7 +91,7 @@ class BaseContext:
         raise KeyError(key)
 
     def __delitem__(self, key):
-        "Delete a variable from the current context"
+        """Delete a variable from the current context"""
         del self.dicts[-1][key]
 
     def __contains__(self, key):
@@ -139,7 +139,7 @@ class BaseContext:
 
 
 class Context(BaseContext):
-    "A stack container for variable context"
+    """A stack container for variable context"""
 
     def __init__(self, dict_=None, autoescape=True, use_l10n=None, use_tz=None):
         self.autoescape = autoescape
